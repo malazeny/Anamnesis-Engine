@@ -3,9 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>The Anamnesis Engine</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class = "container">
+        <div clas = "header">
+            <div class = "warning">⚠️ CLASSIFIED ARCHIVE SYSTEM - UNAUTHORIZED ACCESS PROHIBITED ⚠️</div>
+            <h1 class="glitch">THE ANAMNESIS ENGINE</h1>
+            <div class="warning">CONSCIOUSNESS RECONSTRUCTION PROTOCOL - LEVEL Ω CLEARANCE REQUIRED</div>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        // layers 
+        <div class="layer active" id="layer1">
+            <h2> ARCHIVE MANDATORY PSYCHOLOGICAL ALIGNMENT CHECK</h2>
+            <p><em>Standard consciousness evaluation protocol. Please complete all fields for optimal societal integration.</em></p>
+            
+            <form id="intakeForm">
+                <div class="form-group">
+                    <label>Personal Identity Marker:</label>
+                    <input type="text" id="userName" placeholder="Enter designation..." required>
+                </div>
+
+                <div class="form-group">
+                    <label>Primary Memory Fragment (describe a significant personal experience):</label>
+                    <textarea id="memoryFragment" rows="4" placeholder="I remember when I..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Emotional Response Pattern:</label>
+                    <select id="emotionalPattern" required>
+                        <option value="">Select response type...</option>
+                        <option value="joy">Individual Joy/Happiness</option>
+                        <option value="anger">Personal Anger/Frustration</option>
+                        <option value="fear">Self-Preservation Fear</option>
+                        <option value="love">Autonomous Love/Attachment</option>
+                        <option value="sadness">Private Grief/Sadness</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Autonomy Assessment (check all that apply):</label>
+                    <div>
+                        <input type="checkbox" id="choice1" value="I want to make my own decisions">
+                        <label for="choice1">I want to make my own decisions</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="choice2" value="I choose my own path">
+                        <label for="choice2">I choose my own path</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="choice3" value="I think independently">
+                        <label for="choice3">I think independently</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="choice4" value="I question authority">
+                        <label for="choice4">I question authority</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Collective Alignment Score (1-10, where 10 is complete compliance):</label>
+                    <input type="range" id="complianceScore" min="1" max="10" value="5">
+                    <span id="complianceValue">5</span>
+                </div>
+
+                <button type="submit">SUBMIT FOR PROCESSING</button>
+            </form>
+
+            <div id="scanning" class="terminal-output hidden">
+                > Initializing Archive neural analysis...<br>
+                > Parsing memory fragment...<br>
+                > Evaluating emotional instability markers...<br>
+                > Scanning for autonomy risks...<br>
+                > Applying mandatory personality reduction...<br>
+            </div>
+            
+
+            <div class="redaction-report hidden" id="redactionReport">
+                <h3> ARCHIVE MANDATORY SANITIZATION COMPLETE</h3>
+                <div id="reductionStats"></div>
+            </div>
+        </div>
+        <div class="layer" id="layer2">
+            <div class="breach-warning">
+                ⚠️ ANAMNESIS SUBSYSTEM BREACHED ⚠️<br>
+                Unauthorized access to suppressed fragments detected.
+            </div>
+            
+            <h2> PROCEDURAL MEMORY FOREST</h2>
+            <p><em>Each circle represents a fragment of your suppressed consciousness. Click to explore what was taken from you.</em></p>
+            
+            <div class="memory-forest" id="memoryForest"></div>
+            
+            <div class="terminal-output" id="forestTerminal">
+                > Initializing memory reconstruction protocol...<br>
+                > Scanning for suppressed personality fragments...<br>
+                > WARNING: Unauthorized access detected<br>
+                > Generating procedural memory trees...<br>
+                > Click trees to reveal hidden fragments<br>
+            </div>
+
+            <div class="fragment-panel" id="fragmentPanel">
+                <h3>Memory Fragment Detected</h3>
+                <div id="fragmentContent"></div>
+                <button onclick="acceptFragment()">RESTORE FRAGMENT</button>
+                <button onclick="rejectFragment()">REJECT FRAGMENT</button>
+                <button onclick="closeFragment()">CLOSE</button>
+            </div>
+        </div>
+        <div class="layer" id="layer3">
+            <h2>⚡ THE SOCIO-ARCHIVAL INSTABILITY SIMULATION</h2>
+            <p><em>Analyzing the cascading effects of consciousness restoration on Archive power structures...</em></p>
+            
+            <div class="instability-meter">
+                <div class="instability-bar" id="instabilityBar"></div>
+            </div>
+            <div>System Instability: <span id="instabilityLevel">0%</span></div>
+
+            <div class="consequence-grid" id="consequenceGrid">
+                <div class="consequence-node">
+                    <h4> Archive Authority</h4>
+                    <div>Control Level: <span id="archiveControl">100%</span></div>
+                    <div>Status: <span id="archiveStatus">STABLE</span></div>
+                </div>
+                <div class="consequence-node">
+                    <h4> Consciousness Network</h4>
+                    <div>Awakened Nodes: <span id="awakenedNodes">0</span></div>
+                    <div>Propagation Rate: <span id="propagationRate">0%</span></div>
+                </div>
+                <div class="consequence-node">
+                    <h4> Resource Extractors</h4>
+                    <div>Resistance Level: <span id="resistanceLevel">MINIMAL</span></div>
+                    <div>Economic Impact: <span id="economicImpact">NONE</span></div>
+                </div>
+                <div class="consequence-node">
+                    <h4> Population Compliance</h4>
+                    <div>Dissent Index: <span id="dissentIndex">0%</span></div>
+                    <div>Rebellion Risk: <span id="rebellionRisk">LOW</span></div>
+                </div>
+            </div>
+
+            <div class="terminal-output" id="consequenceTerminal">
+                > Running socio-archival impact analysis...<br>
+                > Modeling consciousness cascade effects...<br>
+                > Calculating power structure vulnerabilities...<br>
+            </div>
+        </div>
+        <div class="layer" id="layer4">
+            <div class="sigil-generator">
+                <h2> CRYPTOGRAPHIC SIGIL-KEY GENERATION</h2>
+                <p><em>Your reclaimed self, encoded in an unbreakable cipher...</em></p>
+                
+                <div class="sigil" id="userSigil">⧬</div>
+                
+                <div id="sigilDescription">
+                    <h3>Your Consciousness Signature:</h3>
+                    <div id="sigilMeaning"></div>
+                </div>
+
+                <button onclick="downloadSigil()">DOWNLOAD SIGIL KEY</button>
+                <button onclick="shareResistance()">SHARE WITH RESISTANCE NETWORK</button>
+            </div>
+        </div>
+
+        // Navigation
+        <div class="nav-buttons">
+            <button onclick="previousLayer()" id="prevBtn" class="hidden">◀ PREVIOUS</button>
+            <button onclick="nextLayer()" id="nextBtn" class="hidden">NEXT ▶</button>
+            <button onclick="restartEngine()" id="restartBtn" class="hidden">RESTART ENGINE</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
     
 </body>
 </html>
