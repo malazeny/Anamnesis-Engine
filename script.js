@@ -288,9 +288,12 @@ function restartEngine() {
     memoryTrees = [];
     restoredFragments = [];
     instabilityLevel = 0;
-    
+
+    document.body.classList.remove("resistance-mode");
+
     document.querySelectorAll('.layer').forEach(layer => layer.classList.remove('active'));
     document.getElementById('layer1').classList.add('active');
+    
     document.getElementById('redactionReport').classList.add('hidden');
     document.getElementById('intakeForm').reset();
     
